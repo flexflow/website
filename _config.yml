@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -93,9 +93,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "FlexFlow"
+  #name             : "FlexFlow"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "A Distributed Deep Learning System"
+  bio              : "Automated Discovery of Fast Parallelization Strategies for Distributed DNN Training"
   #location         : "Somewhere"
   #email            :
   links:
@@ -111,7 +111,7 @@ author:
     #- label: "Facebook"
     #  icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
-    - label: "GitHub"
+    - label: "FlexFlow GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/flexflow/flexflow"
     #- label: "Instagram"
