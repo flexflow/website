@@ -19,16 +19,16 @@ FlexFlow performs Markov Chain Monte Carlo (MCMC) search over the SOAP search sp
 ## Searching For Fast Parallelization Strategies
 
 FlexFlow performs MCMC search during model compilation (i.e., `model.compile`) and uses the following configuration flags to control the search procedure.
-* `--search-budget` or `--budget` (default 0): number of iterations for the MCMC search.
+* `--search-budget` or `--budget` (default 0): the number of iterations for the MCMC search.
 * `--search-alpha` or `--alpha` (default 0.05): a hyper-parameter for the search procedure (see below).
 * `--export-strategy` or `--export` (default None): path to export the best discovered strategy.
 * `--import-strategy` or `--import` (default None): path to import a previous saved strategy.
 
-FlexFlow uses a hyper-parameter alpha (>= 0) to controls the probability that a new strategy will be accepted by the MCMC search algorithm. By setting alpha = 0, the MCMC search becomes a fully randomized search algorithm that accepts all new proposals. As alpha increases, the search algorithm gradually becomes a greedy algorithm that prefers to accepts new proposals that improve the runtime time. For more details, see [this paper](https://cs.stanford.edu/~zhihao/papers/sysml19a.pdf).
+FlexFlow uses a hyper-parameter alpha (>= 0) to controls the probability that a newly proposed strategy is accepted by the MCMC search. By setting alpha = 0, the MCMC search becomes a fully randomized search algorithm, which accepts all new proposals. As alpha increases, the search algorithm gradually becomes a greedy algorithm that prefers to accepts new proposals that stictly improve the training performance. For more details, see [our paper](https://cs.stanford.edu/~zhihao/papers/sysml19a.pdf).
 
 The MCMC search algorithm starts from data parallelism by default. To guarantee that data parallelism is valid, make sure the global batch size is a multiplier of the total number of GPUs used for training.
 
-To export the discovered strategy to an external file, set the `--export-strategy` flag.
+To export the best discovered strategy to an external file, set the `--export-strategy` flag.
 ```
 ./flexflow_python dlrm.py -ll:gpu 4 -ll:fsize 12000 --search-budget 10000 --export-strategy /path/to/strategy
 ```

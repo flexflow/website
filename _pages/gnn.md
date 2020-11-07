@@ -19,4 +19,4 @@ FlexFlow enables fast GNN training on large (e.g., billion-edge) graphs using [a
 <img src="/assets/images/attribute_parallelism.jpg">
 </figure>
 
-See [examples](https://github.com/jiazhihao/roc) for using FlexFlow to train GNN models.
+See more [examples](https://github.com/jiazhihao/roc) that use FlexFlow to train large GNN models.
