@@ -2,6 +2,8 @@
 main:
   - title: "About"
     url: /about/
+  - title: "Bootcamp 2020"
+    url: /bootcamp/
   - title: "Get Started"
     url: /start/
   - title: "Autotuning"
@@ -10,3 +12,4 @@ main:
     url: /keras/
   - title: "GNN"
     url: /gnn/
+
