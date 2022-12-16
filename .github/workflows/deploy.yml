@@ -31,9 +31,22 @@ jobs:
       - name: Build Jekyll Website
         run: JEKYLL_ENV=production bundle exec jekyll build
 
+      - name: Backup existing version of website
+        run: |
+          mkdir backup
+          sudo apt-get install -y ncftp
+          ncftpget -R -T -v -u ${{ secrets.FTP_USERNAME }} -p ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} ./backup/ ./www/
+          tar -zcvf backup.tar backup/
+
+      - name: Save website backup as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: backup
+          path: backup.tar.gz
+
       - name: Deploy to flexflow.ai
         # Only deploy on push to master
-        if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        #if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ${{ secrets.FTP_SERVER }}
