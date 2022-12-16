@@ -31,12 +31,9 @@ jobs:
       - name: Build Jekyll Website
         run: JEKYLL_ENV=production bundle exec jekyll build
 
-      - name: Show all files
-        run: ls -R
-
-      - name: Deploy
+      - name: Deploy to flexflow.ai
         # Only deploy on push to master
-        if: ${{ github.event_name }} == 'push' && ${GITHUB_REF#refs/heads/} == "master"
+        if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ${{ secrets.FTP_SERVER }}
