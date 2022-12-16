@@ -1,0 +1,62 @@
+name: "deploy"
+on:
+  # Trigger workflow on every pull request and every push to master
+  pull_request:
+  push:
+    branches:
+      - master
+  # Enable us to manually run the workflow
+  workflow_dispatch:
+
+# Cancel outdated in-progress jobs if a newer one is queued
+concurrency:
+  group: deploy-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git Repository
+        uses: actions/checkout@v3
+
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0"
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+      - name: Build Jekyll Website
+        run: JEKYLL_ENV=production bundle exec jekyll build
+
+      - name: Backup existing version of website
+        # Only backup on push to master
+        if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        run: |
+          mkdir backup
+          sudo apt-get install -y ncftp
+          ncftpget -R -T -v -u ${{ secrets.FTP_USERNAME }} -p ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} ./backup/ ./www/
+          cd backup/www
+          tar -zcvf ../../backup.tar.gz .
+
+      - name: Save website backup as an artifact
+        # Only backup on push to master
+        if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: backup
+          path: backup.tar.gz
+
+      - name: Deploy to flexflow.ai
+        # Only deploy on push to master
+        if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          local-dir: ./_site/
+          server-dir: ./www/
