@@ -25,6 +25,9 @@ jobs:
       - name: Build
         uses: jerryjvl/jekyll-build-action@v1
 
+      - name: Show all files
+        run: ls -R
+
       - name: Deploy
         # Only deploy on push to master
         if: ${{ github.event_name }} == 'push' && ${GITHUB_REF#refs/heads/} == "master"
