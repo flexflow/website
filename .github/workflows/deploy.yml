@@ -36,7 +36,8 @@ jobs:
           mkdir backup
           sudo apt-get install -y ncftp
           ncftpget -R -T -v -u ${{ secrets.FTP_USERNAME }} -p ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} ./backup/ ./www/
-          tar -zcvf backup.tar backup/
+          cd backup/www
+          tar -zcvf ../../backup.tar.gz .
 
       - name: Save website backup as an artifact
         uses: actions/upload-artifact@v3
