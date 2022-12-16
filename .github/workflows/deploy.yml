@@ -22,13 +22,13 @@ jobs:
       - name: Checkout Git Repository
         uses: actions/checkout@v3
 
-      - name: setup ruby
+      - name: Install Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.0"
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
-      - name: Build
+      - name: Build Jekyll Website
         run: JEKYLL_ENV=production bundle exec jekyll build
 
       - name: Show all files
@@ -44,8 +44,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./_site/
-          server-dir: ./github_test/
-          log-level: verbose
-          
-          #ARGS: --delete --transfer-all
-          # --delete arg will delete files on the server if you've deleted them in git
+          server-dir: ./www/
