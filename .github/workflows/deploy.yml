@@ -1,0 +1,39 @@
+name: "deploy"
+on:
+  # Trigger workflow on every pull request and every push to master
+  pull_request:
+  push:
+    branches:
+      - master
+  # Enable us to manually run the workflow
+  workflow_dispatch:
+
+# Cancel outdated in-progress jobs if a newer one is queued
+concurrency:
+  group: deploy-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Git Repository
+        uses: actions/checkout@v3
+
+      - name: Build
+        uses: jerryjvl/jekyll-build-action@v1
+
+      - name: Deploy
+        # Only deploy on push to master
+        if: ${{ github.event_name }} == 'push' && ${GITHUB_REF#refs/heads/} == "master"
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          LOCAL_DIR: _site
+          REMOTE_DIR: todo
+          ARGS: --delete --transfer-all
+          # --delete arg will delete files on the server if you've deleted them in git
