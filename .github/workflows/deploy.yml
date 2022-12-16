@@ -44,8 +44,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./_site/
-          server-dir: ./www/
-          dry-run: true
+          server-dir: ./github_test/
+          log-level: verbose
           
           #ARGS: --delete --transfer-all
           # --delete arg will delete files on the server if you've deleted them in git
