@@ -14,7 +14,7 @@ header:
 
 We are excited to announce the first FlexFlow bootcamp, 9:00-13:00 PDT December 11th 2020.
 The bootcamp is designed for people interested in using FlexFlow to accelerate the distributed training performance of DNN models written in TensorFlow Keras or PyTorch.
-This year's bootcamp covers a series of tutorials on how to use FlexFlow, followed by hands-on exercises and office hours.
+This year's bootcamp covers a series of tutorials on how to use FlexFlow, followed by some hands-on exercises and office hours.
 
 Line to join the bootcamp: [zoom link](https://cmu.zoom.us/j/93527527649?pwd=V2JxSXVMaDM5cjlhbEVPNURKTG1vUT09).
 
