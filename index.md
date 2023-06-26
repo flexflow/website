@@ -10,21 +10,21 @@ header:
       url: "/start/"
 excerpt: >
   Automatically Discovering Fast Parallelization Strategies for Distributed Deep Neural Network Training<br />
-  <small><a href="https://github.com/flexflow/FlexFlow/tree/r20.08">Latest release r20.08</a></small>
+  <small><a href="https://github.com/flexflow/FlexFlow">GitHub</a></small>
 feature_row:
-  - title: "Performance Autotuning"
-    excerpt: "FlexFlow accelerates DNN training by automatically discovering fast parallelization strategies for a specific parallel machine."
-    url: "/search/"
+  - title: "Flexible Parallelization"
+    excerpt: "FlexFlow supports parallelizing DNN training through combinations of the Sample, Operator, Attribute, and Parameter dimensions."
+    url: "https://cs.stanford.edu/~zhihao/papers/sysml19a.pdf"
     btn_class: "btn--primary"
     btn_label: "Learn more"
-  - title: "Keras Support"
-    excerpt: "FlexFlow provides a drop-in replacement for TensorFlow Keras and requires only a few lines of changes to existing Keras programs."
-    url: "/keras/"
+  - title: "Joint Optimization"
+    excerpt: "FlexFlow uses a novel hierarchical search algorithm to jointly optimize algebraic transformations and parallelization while maintaining scalability."
+    url: "https://www.cs.cmu.edu/~zhihaoj2/papers/unity_osdi22.pdf"
     btn_class: "btn--primary"
     btn_label: "Learn more"
-  - title: "Large-Scale GNNs"
-    excerpt: "FlexFlow enables fast graph neural network training and inference on large-scale graphs by exploring attribute parallelism."
-    url: "/gnn/"
+  - title: "Speculative Inference"
+    excerpt: "FlexFlow accelerates generative LLM inference with speculative inference and token tree verification."
+    url: "/specInfer/"
     btn_class: "btn--primary"
     btn_label: "Learn more"      
 ---

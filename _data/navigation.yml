@@ -2,14 +2,7 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Bootcamp 2020"
-    url: /bootcamp/
   - title: "Get Started"
     url: /start/
-  - title: "Autotuning"
-    url: /search/
-  - title: "Keras Support"
-    url: /keras/
-  - title: "GNN"
-    url: /gnn/
-
+  - title: "SpecInfer"
+    url: /specInfer/

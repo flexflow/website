@@ -19,10 +19,7 @@ FlexFlow provides the following key features:
 
 * **Flexible Parallelization**. FlexFlow supports parallelizing DNN training through combinations of the [Sample, Operator, Attribute, and Parameter](https://cs.stanford.edu/~zhihao/papers/sysml19a.pdf) dimensions, and guarantees that different parallelization strategies maintain the same model accuracy by design.
 
-* **Performance Autotuning**. To accelerate DNN training on a specific parallel machine, FlexFlow uses guided randomized search to automatically find fast parallelization strategies while requiring no manual effort.
+* **Joint Optimization**. FlexFlow uses a novel hierarchical search algorithm
+to jointly optimize [algebraic transformations and parallelization](https://www.cs.cmu.edu/~zhihaoj2/papers/unity_osdi22.pdf) while maintaining scalability.
 
-* **Keras Support**. FlexFlow offers a drop-in replacement for TensorFlow Keras and transparently accelerates existing Keras programs by discovering faster parallelization strategies.
-
-* **Large-Scale GNNs**. FlexFlow enables fast graph neural network (GNN) training on large graphs (e.g., billion-edge) by distributing GNN computations across multiple GPUs (potentially on multiple compute nodes) using [attribute parallelism](https://cs.stanford.edu/~zhihao/papers/mlsys20.pdf).
-
-
+* **Speculative Inference**. FlexFlow accelerates generative LLM inference with [speculative inference and token tree verification](https://arxiv.org/abs/2305.09781).
