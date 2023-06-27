@@ -4,12 +4,9 @@ Uses **MinimalMistakes** - a flexible two-column Jekyll theme, perfect for build
 
 ## Run Project Locally
 1. Clone Project
-2. Install dependencies
-```gem install bundler jekyll```
-3. Run project
-```bundle exec jekyll serve```
-4. View local instance in browser
-```http://localhost:4000```
+2. Install dependencies with ```gem install bundler jekyll```
+3. Run project with ```bundle exec jekyll serve```
+4. View local instance in browser at [http://localhost:4000](http://localhost:4000)
 
 
 ## Project Organization
