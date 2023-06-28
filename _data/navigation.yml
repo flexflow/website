@@ -1,10 +1,10 @@
 # main links
 main:
+  - title: "About"
+    url: /
   - title: "Get Started"
-    url: /start/
+    url: https://flexflow.readthedocs.io/en/latest/installation.html
   - title: "Documentation"
     url: https://flexflow.readthedocs.io/
-  - title: "Github"
+  - title: "Code"
     url: https://github.com/flexflow/FlexFlow
-  - title: "Resources"
-    url: /resources/
