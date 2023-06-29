@@ -3,8 +3,8 @@ layout: splash
 permalink: /
 hidden: true
 header:
-  overlay_color: "#5e616c"
-  overlay_image: /assets/images/Banner.jpg
+  overlay_color: "#010005"
+  overlay_image: /assets/images/Banner.png
 excerpt: >
   Automatically Discovering Fast Parallelization Strategies for Distributed Deep Neural Network Training<br />
 
