@@ -1,8 +1,10 @@
 # main links
 main:
   - title: "About"
-    url: /about/
+    url: /
   - title: "Get Started"
-    url: /start/
-  - title: "SpecInfer"
-    url: /specInfer/
+    url: https://flexflow.readthedocs.io/en/latest/installation.html
+  - title: "Documentation"
+    url: https://flexflow.readthedocs.io/
+  - title: "Code"
+    url: https://github.com/flexflow/FlexFlow

@@ -7,7 +7,8 @@ classes: wide
 #toc_sticky: true
 author_profile: true
 header:
-  overlay_image: /assets/images/header.jpg 
+  overlay_image: /assets/images/banner.png
+  overlay_filter: rgba(255, 255, 255, 0.8)
 ---
 
 # SpecInfer: Accelerating Generative LLM Serving with Speculative Inference and Token Tree Verification
