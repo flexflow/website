@@ -3,8 +3,8 @@ layout: splash
 permalink: /
 hidden: true
 header:
-  overlay_color: "#010005"
   overlay_image: /assets/images/Banner.png
+  overlay_filter: rgba(255, 255, 255, 0.8)
 excerpt: >
   Automatically Discovering Fast Parallelization Strategies for Distributed Deep Neural Network Training<br />
 
@@ -24,11 +24,6 @@ feature_row:
     url: "/specInfer/"
     btn_class: "btn--primary"
     btn_label: "Learn more"  
-  - title: "Videos"
-    excerpt: "Peruse a collection of youtube videos about FlexFlow."
-    url: "https://www.youtube.com/"
-    btn_class: "btn--primary"
-    btn_label: "Watch" 
  
 ---
 
