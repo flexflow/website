@@ -7,7 +7,7 @@ classes: wide
 #toc_sticky: true
 author_profile: true
 header:
-  overlay_image: /assets/images/banner.png
+  overlay_image: /assets/images/Banner.png
   overlay_filter: rgba(255, 255, 255, 0.8)
 ---
 
