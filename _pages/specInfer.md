@@ -7,7 +7,7 @@ classes: wide
 #toc_sticky: true
 author_profile: true
 header:
-  overlay_image: /assets/images/banner.png
+  overlay_image: /assets/images/thin_banner.png
   overlay_filter: rgba(255, 255, 255, 0.8)
 ---
 
@@ -43,4 +43,4 @@ You may refer to our [GitHub page](https://github.com/flexflow/FlexFlow/blob/inf
 ## Paper
 This project is initiated by members from CMU, Stanford, and UCSD. We will be continuing developing and supporting SpecInfer and the underlying FlexFlow runtime system. The following paper describes design, implementation, and key optimizations of SpecInfer.
 
-* Xupeng Miao*, Gabriele Oliaro*, Zhihao Zhang*, Xinhao Cheng, Zeyu Wang, Rae Ying Yee Wong, Zhuoming Chen, Daiyaan Arfeen, Reyna Abhyankar, and Zhihao Jia. [SpecInfer: Accelerating Generative LLM Serving with Speculative Inference and Token Tree Verification](https://arxiv.org/abs/2305.09781).
+* Xupeng Miao\*, Gabriele Oliaro\*, Zhihao Zhang\*, Xinhao Cheng, Zeyu Wang, Rae Ying Yee Wong, Zhuoming Chen, Daiyaan Arfeen, Reyna Abhyankar, and Zhihao Jia. [SpecInfer: Accelerating Generative LLM Serving with Speculative Inference and Token Tree Verification](https://arxiv.org/abs/2305.09781).
