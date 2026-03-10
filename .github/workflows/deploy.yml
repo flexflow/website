@@ -31,32 +31,20 @@ jobs:
       - name: Build Jekyll Website
         run: JEKYLL_ENV=production bundle exec jekyll build
 
-      - name: Backup existing version of website
-        # Only backup on push to master
+      - name: Create SSH key
         if: ${{ success() && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && github.ref == 'refs/heads/master' }}
         run: |
-          mkdir backup
-          sudo apt-get install -y ncftp
-          ncftpget -R -T -v -u ${{ secrets.FTP_USERNAME }} -p ${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }} ./backup/ ./www/
-          cd backup/www
-          tar -zcvf ../../backup.tar.gz .
-
-      - name: Save website backup as an artifact
-        # Only backup on push to master
-        if: ${{ success() && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' )  && github.ref == 'refs/heads/master' }}
-        uses: actions/upload-artifact@v3
-        with:
-          name: backup
-          path: backup.tar.gz
+          mkdir -p ~/.ssh/
+          echo "$SSH_PRIVATE_KEY" > ../.ssh/id_ed25519
+          sudo chmod 600 ../id_ed25519
+          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+        shell: bash
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+          SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
 
       - name: Deploy to flexflow.ai
         # Only deploy on push to master
         if: ${{ success() && ( github.event_name == 'push' || github.event_name == 'workflow_dispatch' ) && github.ref == 'refs/heads/master' }}
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
-          local-dir: ./_site/
-          server-dir: ./www/
+        run: |
+          rsync --delete -rvzhPe ssh ./_site/ flexflow-ai@lissitzky.lockshaw.net:/opt/www/flexflow.ai/
